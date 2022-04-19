@@ -6,6 +6,7 @@ import TagManager from "react-gtm-module";
 
 export default function Home() {
   const productImpresion = () => {
+    TagManager.dataLayer({ ecommerce: null });
     TagManager.dataLayer({
       dataLayer: {
         event: "productImpression",
@@ -19,7 +20,7 @@ export default function Home() {
               brand: "Google",
               category: "Apparel",
               variant: "Gray",
-              list: "Search Results",
+              list: "popular > promotion",
               position: 1,
             },
             {
@@ -29,7 +30,7 @@ export default function Home() {
               brand: "Google",
               category: "Apparel",
               variant: "Black",
-              list: "Search Results",
+              list: "popular > promotion",
               position: 2,
             },
           ],
@@ -39,12 +40,13 @@ export default function Home() {
   };
 
   const productClick = () => {
+    TagManager.dataLayer({ ecommerce: null });
     TagManager.dataLayer({
       dataLayer: {
         event: "productClick",
         ecommerce: {
           click: {
-            actionField: { list: "Search Results" }, // Optional list property.
+            actionField: { list: "popular > promotion" }, // Optional list property.
             products: [
               {
                 name: "Donut Friday Scented T-Shirt",
@@ -53,7 +55,7 @@ export default function Home() {
                 brand: "Google",
                 category: "Apparel",
                 variant: "Black",
-                list: "Search Results",
+                list: "popular > promotion",
                 position: 2,
               },
             ],
@@ -64,100 +66,118 @@ export default function Home() {
   };
 
   const addToCart = () => {
+    TagManager.dataLayer({ ecommerce: null });
     TagManager.dataLayer({
       dataLayer: {
-        'event': 'addToCart',
-        'ecommerce': {
-          'currencyCode': 'EUR',
-          'add': {                                // 'add' actionFieldObject measures.
-            'products': [{                        //  adding a product to a shopping cart.
-              'name': 'Triblend Android T-Shirt',
-              'id': '12345',
-              'price': '15.25',
-              'brand': 'Google',
-              'category': 'Apparel',
-              'variant': 'Gray',
-              'quantity': 1
-             }]
-          }
-        }
+        event: "addToCart",
+        ecommerce: {
+          currencyCode: "EUR",
+          add: {
+            // 'add' actionFieldObject measures.
+            products: [
+              {
+                //  adding a product to a shopping cart.
+                name: "Donut Friday Scented T-Shirt",
+                id: "67890",
+                price: "33.75",
+                brand: "Google",
+                category: "Apparel",
+                variant: "Gray",
+                quantity: 1,
+              },
+            ],
+          },
+        },
       },
     });
   };
 
   const removeFromCart = () => {
+    TagManager.dataLayer({ ecommerce: null });
     TagManager.dataLayer({
       dataLayer: {
-        'event': 'removeFromCart',
-        'ecommerce': {
-          'currencyCode': 'EUR',
-          'remove': {                                // 'add' actionFieldObject measures.
-            'products': [{                        //  adding a product to a shopping cart.
-              'name': 'Triblend Android T-Shirt',
-              'id': '12345',
-              'price': '15.25',
-              'brand': 'Google',
-              'category': 'Apparel',
-              'variant': 'Gray',
-              'quantity': 1
-             }]
-          }
-        }
+        event: "removeFromCart",
+        ecommerce: {
+          currencyCode: "EUR",
+          remove: {
+            // 'add' actionFieldObject measures.
+            products: [
+              {
+                //  adding a product to a shopping cart.
+                name: "Donut Friday Scented T-Shirt",
+                id: "67890",
+                price: "33.75",
+                brand: "Google",
+                category: "Apparel",
+                variant: "Gray",
+                quantity: 1,
+              },
+            ],
+          },
+        },
       },
     });
   };
   const checkout = () => {
+    console.log(1);
+    TagManager.dataLayer({ ecommerce: null });
     TagManager.dataLayer({
-      'event': 'checkout',
-      'ecommerce': {
-        'checkout': {
-          'actionField': {'step': 1, 'option': 'Visa'},
-          'products': [{
-            'name': 'Triblend Android T-Shirt',
-            'id': '12345',
-            'price': '15.25',
-            'brand': 'Google',
-            'category': 'Apparel',
-            'variant': 'Gray',
-            'quantity': 1
-         }]
-       }
-     },
+      dataLayer: {
+        pageType: "checkout",
+        pageName: "checkout",
+        event: "checkout",
+        eventAction: "checkout",
+        ecommerce: {
+          checkout: {
+            actionField: { step: 1, option: "Visa" },
+            products: [
+              {
+                name: "Donut Friday Scented T-Shirt",
+                id: "67890",
+                price: "33.75",
+                brand: "Google",
+                category: "Apparel",
+                variant: "Gray",
+                quantity: 1,
+              },
+            ],
+          },
+        },
+      },
     });
   };
   const purchase = () => {
+    TagManager.dataLayer({ ecommerce: null });
     TagManager.dataLayer({
-      'ecommerce': {
-        'purchase': {
-          'actionField': {
-            'id': 'T12345',                         // Transaction ID. Required for purchases and refunds.
-            'affiliation': 'Online Store',
-            'revenue': '35.43',                     // Total transaction value (incl. tax and shipping)
-            'tax':'4.90',
-            'shipping': '5.99',
-            'coupon': 'SUMMER_SALE'
+      dataLayer: {
+        event: "purchase",
+        eventAction: "purchase",
+        ecommerce: {
+          purchase: {
+            actionField: {
+              id: "T12345", // Transaction ID. Required for purchases and refunds.
+              affiliation: "Online Store",
+              revenue: "33.75", // Total transaction value (incl. tax and shipping)
+              tax: "4.90",
+              shipping: "5.99",
+              coupon: "SUMMER_SALE",
+            },
+            products: [
+              {
+                // List of productFieldObjects.
+                name: "Donut Friday Scented T-Shirt", // Name or ID is required.
+                id: "67890",
+                price: "33.75",
+                brand: "Google",
+                category: "Apparel",
+                variant: "Gray",
+                quantity: 1,
+                coupon: "", // Optional fields may be omitted or set to empty string.
+              },
+            ],
           },
-          'products': [{                            // List of productFieldObjects.
-            'name': 'Triblend Android T-Shirt',     // Name or ID is required.
-            'id': '12345',
-            'price': '15.25',
-            'brand': 'Google',
-            'category': 'Apparel',
-            'variant': 'Gray',
-            'quantity': 1,
-            'coupon': ''                            // Optional fields may be omitted or set to empty string.
-           },
-           {
-            'name': 'Donut Friday Scented T-Shirt',
-            'id': '67890',
-            'price': '33.75',
-            'brand': 'Google',
-            'category': 'Apparel',
-            'variant': 'Black',
-            'quantity': 1
-           }]
-        }
-      }
+        },
+      },
     });
   };
   return (
