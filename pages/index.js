@@ -330,9 +330,9 @@ export default function Home() {
             actionField: {
               id: "T12345", // Transaction ID. Required for purchases and refunds.
               affiliation: "Online Store",
-              revenue: "33.75", // Total transaction value (incl. tax and shipping)
-              tax: "4.90",
-              shipping: "5.99",
+              revenue: 33.75, // Total transaction value (incl. tax and shipping)
+              tax: 4.90,
+              shipping: 5.99,
               coupon: "SUMMER_SALE",
             },
             products: [
@@ -340,7 +340,7 @@ export default function Home() {
                 // List of productFieldObjects.
                 name: "Donut Friday Scented T-Shirt", // Name or ID is required.
                 id: "67890",
-                price: "33.75",
+                price: 33.75,
                 brand: "Google",
                 category: "Apparel",
                 variant: "Gray",
