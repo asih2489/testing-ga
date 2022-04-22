@@ -11,7 +11,7 @@ export default function Home() {
       dataLayer: {
         event: "productImpression",
         ecommerce: {
-          currencyCode: "EUR", // Local currency is optional.
+          currencyCode: "IDR", // Local currency is optional.
           impressions: [
             {
               name: "Triblend Android T-Shirt", // Name or ID is required.
@@ -154,7 +154,7 @@ export default function Home() {
       dataLayer: {
         event: "addToCart",
         ecommerce: {
-          currencyCode: "EUR",
+          currencyCode: "IDR",
           add: {
             // 'add' actionFieldObject measures.
             products: [
@@ -211,7 +211,7 @@ export default function Home() {
       dataLayer: {
         event: "removeFromCart",
         ecommerce: {
-          currencyCode: "EUR",
+          currencyCode: "IDR",
           remove: {
             // 'add' actionFieldObject measures.
             products: [
@@ -277,7 +277,7 @@ export default function Home() {
               {
                 name: "Donut Friday Scented T-Shirt",
                 id: "67890",
-                price: "33.75",
+                price: 33.75,
                 brand: "Google",
                 category: "Apparel",
                 variant: "Gray",
